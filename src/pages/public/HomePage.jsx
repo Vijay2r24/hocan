@@ -463,36 +463,38 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           {SUCCESS_STORIES.slice(0, 4).map((story, idx) => (
             <div
               key={story.id}
               data-aos="fade-up"
               data-aos-delay={(idx % 2) * 150}
-              className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-xs flex flex-col justify-between space-y-4 card-hover h-full"
+              className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-8 shadow-xs flex flex-col justify-between space-y-4 card-hover h-full"
             >
               <div>
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-2.5">
-                    <span className="text-3xl">{story.flag}</span>
-                    <div>
-                      <h4 className="font-display font-bold text-lg text-[#073B57]">{story.patientName}</h4>
-                      <p className="text-xs text-slate-500 font-medium">{story.country} • {story.condition}</p>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4 pb-2 border-b border-slate-100">
+                  <div className="flex items-start gap-2.5 min-w-0 flex-1">
+                    <span className="text-2xl sm:text-3xl flex-shrink-0 pt-0.5" role="img" aria-label={story.country}>{story.flag}</span>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-display font-bold text-base sm:text-lg text-[#073B57] leading-snug">{story.patientName}</h4>
+                      <p className="text-xs text-slate-500 font-medium leading-relaxed mt-0.5">{story.country} • <span className="text-[#0B5678] font-semibold">{story.condition}</span></p>
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
-                    {story.savings}
-                  </span>
+                  <div className="flex-shrink-0 self-start">
+                    <span className="inline-flex items-center text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full whitespace-nowrap shadow-2xs">
+                      {story.savings}
+                    </span>
+                  </div>
                 </div>
 
-                <p className="text-base text-slate-700 italic leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-700 italic leading-relaxed">
                   "{story.quote}"
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500">
                 <span className="font-semibold text-[#0B5678]">{story.doctor} ({story.hospital})</span>
-                <span className="font-medium">{story.timeline}</span>
+                <span className="font-medium text-slate-400">{story.timeline}</span>
               </div>
             </div>
           ))}
