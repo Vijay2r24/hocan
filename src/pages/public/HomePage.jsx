@@ -52,7 +52,7 @@ export default function HomePage() {
   return (
     <div className="space-y-24 pb-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#073B57] via-[#0B5678] to-[#073B57] text-white pt-10 pb-20 md:pt-14 md:pb-28 xl:pt-16 xl:pb-36">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#073B57] via-[#0B5678] to-[#073B57] text-white pt-8 pb-16 md:pt-12 md:pb-24 xl:pt-14 xl:pb-28">
         {/* Subtle animated glowing backgrounds */}
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 -left-20 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none animate-float" />
@@ -172,7 +172,7 @@ export default function HomePage() {
       </section>
 
       {/* Eight-Stage Patient Journey Tracker */}
-      <section data-aos="fade-up" data-aos-duration="800" className="max-w-7xl mx-auto px-4 sm:px-6 -mt-20 relative z-20">
+      <section data-aos="fade-up" data-aos-duration="800" className="max-w-7xl mx-auto px-4 sm:px-6 -mt-12 sm:-mt-16 relative z-20">
         <JourneyProgressTracker />
       </section>
 
