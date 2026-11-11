@@ -336,10 +336,10 @@ export default function JourneyProgressTracker({ compact = false }) {
       <div className="mb-7">
         <div className="relative">
           {/* Background Connecting Track */}
-          <div className="hidden lg:block absolute top-7 left-8 right-8 h-2 bg-slate-100 rounded-full z-0">
-            {/* Colored Active Track */}
+          <div className="hidden lg:block absolute top-7 left-[6.25%] right-[6.25%] h-1 bg-slate-200/80 rounded-full z-0">
+            {/* Clean Solid Progress Track (No Muddy Multi-Color Gradient) */}
             <div
-              className="h-full bg-gradient-to-r from-emerald-500 via-[#0B5678] to-[#FF791B] rounded-full transition-all duration-700 ease-out shadow-xs"
+              className="h-full bg-emerald-500 rounded-full transition-all duration-700 ease-out"
               style={{
                 width: `${Math.min(100, Math.max(0, ((currentStage - 1) / 7) * 100))}%`
               }}
@@ -361,48 +361,44 @@ export default function JourneyProgressTracker({ compact = false }) {
                   onClick={() => handleStageSelect(stage.id)}
                   className={`flex flex-col items-center p-2.5 sm:p-3 rounded-2xl transition-all duration-200 text-center cursor-pointer group focus:outline-hidden ${
                     isSelected
-                      ? 'bg-slate-50 ring-2 ring-[#FF791B] shadow-md -translate-y-1'
-                      : 'hover:bg-slate-50/70 hover:-translate-y-0.5'
+                      ? 'bg-white shadow-md shadow-slate-200/80 border border-slate-200/90 -translate-y-1'
+                      : 'hover:bg-slate-50/80 hover:-translate-y-0.5'
                   }`}
                   aria-label={`View details for Stage ${stage.id}: ${stage.title}`}
                 >
                   {/* Step Icon Badge */}
                   <div
-                    className={`w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md relative ${
+                    className={`w-12 h-12 sm:w-13 sm:h-13 rounded-2xl flex items-center justify-center transition-all duration-300 relative ${
                       isCompleted
-                        ? 'bg-emerald-600 text-white shadow-emerald-600/25 group-hover:bg-emerald-700'
+                        ? 'bg-emerald-50 text-emerald-600 border-2 border-emerald-400/90 shadow-2xs group-hover:bg-emerald-100/80'
                         : isCurrent
-                        ? 'bg-gradient-to-tr from-[#FF791B] to-amber-500 text-white ring-4 ring-orange-200 shadow-orange-500/30 scale-105'
-                        : isSelected
-                        ? 'bg-[#073B57] text-white shadow-[#073B57]/20 ring-4 ring-slate-200'
-                        : 'bg-white text-slate-500 border-2 border-slate-200/90 group-hover:border-[#073B57] group-hover:text-[#073B57]'
+                        ? 'bg-orange-50 text-[#FF791B] border-2 border-[#FF791B] ring-4 ring-orange-100 shadow-sm'
+                        : 'bg-white text-slate-400 border border-slate-200 shadow-2xs group-hover:border-slate-300 group-hover:text-slate-600'
                     }`}
                   >
                     {isCompleted ? (
-                      <Check className="w-5 h-5 sm:w-6 sm:h-6 stroke-[3]" />
+                      <Check className="w-5 h-5 stroke-[2.5]" />
                     ) : (
-                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <Icon className="w-5 h-5" />
                     )}
 
-                    {/* Active Pulsing Indicator */}
+                    {/* Active Pulsing Indicator for Current Milestone */}
                     {isCurrent && (
-                      <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+                      <span className="absolute -top-1 -right-1 flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF791B] opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-[#FF791B] border-2 border-white"></span>
                       </span>
                     )}
                   </div>
 
                   {/* Stage Tag */}
                   <span
-                    className={`text-[10px] font-extrabold uppercase tracking-wider mt-2.5 px-2 py-0.5 rounded-md transition-colors ${
-                      isSelected
-                        ? 'bg-[#073B57] text-white'
-                        : isCurrent
-                        ? 'bg-orange-100 text-[#FF791B]'
+                    className={`text-[10px] font-extrabold uppercase tracking-wider mt-2.5 px-2 py-0.5 rounded-full transition-colors ${
+                      isCurrent
+                        ? 'bg-[#FF791B] text-white shadow-2xs'
                         : isCompleted
-                        ? 'bg-emerald-100 text-emerald-800'
-                        : 'text-slate-400'
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/70'
+                        : 'text-slate-400 bg-slate-100/60'
                     }`}
                   >
                     Stage 0{stage.id}
@@ -411,13 +407,13 @@ export default function JourneyProgressTracker({ compact = false }) {
                   {/* Title & Timeline */}
                   <span
                     className={`text-xs font-bold leading-tight mt-1 line-clamp-1 transition-colors ${
-                      isSelected
-                        ? 'text-[#073B57] font-black'
-                        : isCurrent
+                      isCurrent
                         ? 'text-[#FF791B]'
+                        : isSelected
+                        ? 'text-[#073B57] font-black'
                         : isCompleted
                         ? 'text-slate-800'
-                        : 'text-slate-600'
+                        : 'text-slate-500'
                     }`}
                   >
                     {stage.shortTitle}
@@ -425,6 +421,13 @@ export default function JourneyProgressTracker({ compact = false }) {
                   <span className="text-[11px] text-slate-400 font-medium mt-0.5">
                     {stage.estTime}
                   </span>
+
+                  {/* Sleek Selection Indicator Bar */}
+                  <div
+                    className={`w-5 h-1 rounded-full mt-2 transition-all duration-300 ${
+                      isSelected ? 'bg-[#FF791B]' : 'bg-transparent'
+                    }`}
+                  />
                 </button>
               );
             })}
