@@ -22,7 +22,9 @@ import {
   FileBadge,
   Stethoscope,
   HeartPulse,
-  Home
+  Home,
+  Play,
+  X
 } from 'lucide-react';
 import {
   JOURNEY_STAGES,
@@ -41,6 +43,7 @@ import { TreatmentCardSkeleton, JourneyTrackerSkeleton, DoctorCardSkeleton } fro
 export default function HomePage() {
   const [activeFaq, setActiveFaq] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   // Automatically load page-related section skeletons on mount
   useEffect(() => {
@@ -87,10 +90,21 @@ export default function HomePage() {
 
                 <Link
                   to="/treatments"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-5 py-3.5 xl:px-7 xl:py-4 rounded-xl xl:rounded-2xl font-semibold text-sm xl:text-base backdrop-blur-xs transition-colors whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-5 py-3.5 xl:px-6 xl:py-4 rounded-xl xl:rounded-2xl font-semibold text-sm xl:text-base backdrop-blur-xs transition-colors whitespace-nowrap"
                 >
                   <span>Explore Treatments</span>
                 </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setIsVideoModalOpen(true)}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-5 py-3.5 xl:px-6 xl:py-4 rounded-xl xl:rounded-2xl font-semibold text-sm xl:text-base backdrop-blur-xs transition-colors whitespace-nowrap cursor-pointer group"
+                >
+                  <span className="w-6 h-6 rounded-full bg-[#FF791B] text-white flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
+                    <Play className="w-3 h-3 fill-current ml-0.5" />
+                  </span>
+                  <span>Watch 30s Video</span>
+                </button>
               </div>
 
               {/* 3 Bold Visual Trust Pillars */}
@@ -136,6 +150,17 @@ export default function HomePage() {
                       24/7 Desk
                     </span>
                   </div>
+
+                  {/* Center Play Button Overlay for 30s Video */}
+                  <button
+                    type="button"
+                    onClick={() => setIsVideoModalOpen(true)}
+                    className="absolute inset-0 m-auto w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-white/95 hover:bg-white text-[#FF791B] flex items-center justify-center shadow-2xl backdrop-blur-md transition-all hover:scale-110 active:scale-95 z-20 group cursor-pointer"
+                    aria-label="Play 30s Video Overview"
+                  >
+                    <span className="absolute inset-0 rounded-full bg-[#FF791B]/20 animate-ping" />
+                    <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-current ml-1 relative z-10" />
+                  </button>
 
                   {/* Floating Card: Assigned Patient Coordinator */}
                   <div className="absolute bottom-20 left-4 right-4 sm:right-auto sm:max-w-xs bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-white/40 text-slate-800 flex items-center gap-3">
@@ -575,6 +600,47 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      {/* 30-Second Video Modal */}
+      {isVideoModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => setIsVideoModalOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-sm sm:max-w-md bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 bg-slate-900/95 border-b border-white/10 text-white">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FF791B] animate-pulse" />
+                <span className="text-xs sm:text-sm font-bold tracking-wide">Hokena Care • 30s Overview</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsVideoModalOpen(false)}
+                className="p-1.5 rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close video"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Video Player */}
+            <div className="relative bg-black flex items-center justify-center max-h-[75vh]">
+              <video
+                src="/videos/hokena_intro_30s.mp4"
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-auto max-h-[75vh] object-contain rounded-b-3xl"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
