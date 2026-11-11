@@ -65,9 +65,11 @@ export default function LoginPage() {
       <div className="max-w-md w-full space-y-7">
         {/* Title */}
         <div className="text-center space-y-2">
-          <div className="w-14 h-14 rounded-2xl bg-[#073B57] text-white flex items-center justify-center mx-auto shadow-md">
-            <Lock className="w-7 h-7 text-[#FF791B]" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Hokena Care Logo"
+            className="w-16 h-16 rounded-full mx-auto shadow-md object-contain"
+          />
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#073B57]">
             Patient Portal Login
           </h2>

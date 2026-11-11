@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
-  HeartHandshake,
   Menu,
   X,
   User,
@@ -52,10 +51,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6">
         <div className="flex items-center justify-between h-16 sm:h-[70px] gap-2 lg:gap-3 xl:gap-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 xl:gap-2.5 group flex-shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#073B57] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform duration-200 flex-shrink-0">
-              <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6 text-[#FF791B]" />
-            </div>
+          <Link to="/" className="flex items-center gap-2.5 xl:gap-3 group flex-shrink-0">
+            <img
+              src="/logo.png"
+              alt="Hokena Care - Heal in India"
+              className="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded-full shadow-2xs group-hover:scale-105 transition-transform duration-200 flex-shrink-0"
+            />
             <div className="flex flex-col">
               <div className="flex items-center gap-1 leading-none">
                 <span className="font-display font-extrabold text-lg sm:text-xl xl:text-2xl tracking-tight text-[#073B57]">

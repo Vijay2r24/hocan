@@ -83,9 +83,11 @@ export default function RegisterPage() {
     <div className="min-h-[85vh] flex items-center justify-center p-4 sm:p-6 py-12">
       <div className="max-w-lg w-full space-y-6">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-[#073B57] text-white flex items-center justify-center mx-auto shadow-md">
-            <UserPlus className="w-6 h-6 text-[#FF791B]" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Hokena Care Logo"
+            className="w-16 h-16 rounded-full mx-auto shadow-md object-contain"
+          />
           <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-[#073B57]">
             Register as a Patient
           </h2>

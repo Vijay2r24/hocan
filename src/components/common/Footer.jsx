@@ -63,10 +63,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 py-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#073B57]">
-                <HeartHandshake className="w-6 h-6 text-[#FF791B]" />
-              </div>
+            <Link to="/" className="flex items-center gap-3 group">
+              <img
+                src="/logo.png"
+                alt="Hokena Care Logo"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-contain bg-white p-0.5 shadow-sm group-hover:scale-105 transition-transform"
+              />
               <div className="flex items-center gap-1 font-display font-bold text-2xl tracking-tight">
                 <span>HOKENA</span>
                 <span className="text-[#FF791B]">CARE</span>

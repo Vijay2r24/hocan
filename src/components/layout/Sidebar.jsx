@@ -16,7 +16,6 @@ import {
   MessageSquare,
   Settings,
   LogOut,
-  HeartHandshake,
   Phone,
   X,
   ExternalLink
@@ -87,10 +86,12 @@ export default function Sidebar({ isOpen, onClose }) {
       >
         {/* Brand Header */}
         <div className="p-5 flex items-center justify-between border-b border-[#0B5678]/80">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#073B57] shadow-md">
-              <HeartHandshake className="w-6 h-6 text-[#FF791B]" />
-            </div>
+          <Link to="/" className="flex items-center gap-3 group">
+            <img
+              src="/logo.png"
+              alt="Hokena Care Logo"
+              className="w-10 h-10 rounded-full object-contain bg-white p-0.5 shadow-md flex-shrink-0 group-hover:scale-105 transition-transform"
+            />
             <div>
               <div className="flex items-center gap-1 font-display font-extrabold text-xl tracking-tight leading-none">
                 <span>HOKENA</span>
