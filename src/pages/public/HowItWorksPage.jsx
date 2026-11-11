@@ -15,6 +15,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { TimelineSkeleton } from '../../components/skeletons';
+import TrustedProcessCards from '../../components/common/TrustedProcessCards';
 
 const stepDetails = [
   {
@@ -211,6 +212,9 @@ export default function HowItWorksPage() {
         </div>
         )}
       </section>
+
+      {/* Trusted, Transparent, Ethical: Process Cards */}
+      <TrustedProcessCards />
 
       {/* CTA Box */}
       <section data-aos="zoom-in" className="max-w-4xl mx-auto px-4 sm:px-6 text-center">

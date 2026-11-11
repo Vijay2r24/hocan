@@ -35,6 +35,7 @@ import {
 import DoctorCard from '../../components/patient/DoctorCard';
 import HospitalCard from '../../components/patient/HospitalCard';
 import JourneyProgressTracker from '../../components/journey/JourneyProgressTracker';
+import TrustedProcessCards from '../../components/common/TrustedProcessCards';
 import { TreatmentCardSkeleton, JourneyTrackerSkeleton, DoctorCardSkeleton } from '../../components/skeletons';
 
 export default function HomePage() {
@@ -364,6 +365,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Trusted, Transparent, Ethical: 9-Stage Process Cards */}
+      <TrustedProcessCards />
 
       {/* Featured Hospitals & Renowned Doctors */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
